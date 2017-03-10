@@ -12,7 +12,7 @@ Example script:
 #SBATCH --cpus-per-task=8
 #SBATCH --time=01:00:00
 
-mpirun -np 2 ./a.out 0 10 1 2 3 4
+mpirun -np 2 ./ItemCF 0 10 1 2 3 4
 
 Command line arguments:
 mode top-k uid1 [uid2...]
