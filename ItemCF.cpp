@@ -64,7 +64,7 @@ int load_movies() {
 	}
 	real_movie_num = i;
 	movies.close();
-	return 1;
+	return 0;
 }
 
 int load_ratings() {
@@ -98,7 +98,7 @@ int load_ratings() {
 	}
 	real_rating_num = i;
 	ratings.close();
-	return 1;
+	return 0;
 }
 
 void update_movieNuser() {
@@ -443,8 +443,16 @@ int main(int argc, char *argv[]){
 	int user, top_num, mode;
 	int uid_num;
 
-	load_movies();
+	int ret = load_movies();
+	if (ret != 0) {
+		printf("load_movies failed!\n");
+		return -1;
+	}
 	load_ratings();
+	if (ret != 0) {
+		printf("load_ratings failed!\n");
+		return -1;
+	}
 	update_movieNuser();
 
 	sscanf(argv[1], "%d", &mode);
